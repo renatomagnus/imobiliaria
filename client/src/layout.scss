@@ -6,6 +6,8 @@
   max-width: 1366px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 
   @include large{
     background-color: rgba(255, 127, 80, 0.507);
@@ -21,5 +23,9 @@
   @include small{
     background-color: rgba(255, 0, 0, 0.363);
     max-width: 640px;
+  }
+
+  .content {
+    flex: 1;
   }
 }
