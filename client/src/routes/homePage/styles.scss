@@ -7,6 +7,27 @@
 
     .wrapper {
       padding-right: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      height: 100%;
+
+      .title {
+        font-size: 64px;
+      }
+
+      .boxes {
+        display: flex;
+        justify-content: space-between;
+
+        h2 {
+          font-size: 36px;
+        }
+        p {
+          font-size: 20px;
+        }
+      }
     }
   }
 
