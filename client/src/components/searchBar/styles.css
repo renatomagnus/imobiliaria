@@ -1,0 +1,41 @@
+.search-bar .type button {
+  padding: 16px 36px;
+  border: 1px solid #999;
+  border-bottom: none;
+  background-color: white;
+  text-transform: capitalize;
+}
+.search-bar .type button.active {
+  background-color: black;
+  color: white;
+}
+.search-bar .type button:first-child {
+  border-top-left-radius: 5px;
+  border-right: none;
+}
+.search-bar .type button:last-child {
+  border-top-right-radius: 5px;
+  border-left: none;
+}
+.search-bar .type form {
+  border: 1px solid #999;
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  gap: 5px;
+  background-color: red;
+}
+.search-bar .type form input {
+  border: none;
+  padding: 0px 10px;
+  width: 200px;
+}
+.search-bar .type form button {
+  border: none;
+  background-color: #fece51;
+  flex: 1;
+}
+.search-bar .type form button img {
+  width: 24px;
+  height: 24px;
+}/*# sourceMappingURL=styles.css.map */

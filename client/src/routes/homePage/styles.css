@@ -1,0 +1,40 @@
+.home {
+  display: flex;
+  height: 100%;
+}
+.home .text-container {
+  flex: 3;
+}
+.home .text-container .wrapper {
+  padding-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  height: 100%;
+}
+.home .text-container .wrapper .title {
+  font-size: 64px;
+}
+.home .text-container .wrapper .boxes {
+  display: flex;
+  justify-content: space-between;
+}
+.home .text-container .wrapper .boxes h2 {
+  font-size: 36px;
+}
+.home .text-container .wrapper .boxes p {
+  font-size: 20px;
+}
+.home .image-container {
+  flex: 2;
+  background-color: #fcf4f3;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.home .image-container img {
+  width: 115%;
+  position: absolute;
+  right: 0;
+}/*# sourceMappingURL=styles.css.map */
