@@ -6,30 +6,30 @@ nav {
   align-items: center;
   height: 100px;
 
-  a{
+  a {
     transition: all 0.4s ease;
 
     @include small {
       display: none;
     }
-    &:hover{
+    &:hover {
       scale: 1.05;
     }
   }
-  .left{
+  .left {
     flex: 3;
     display: flex;
     align-items: center;
     gap: 50px;
 
-    .logo{
+    .logo {
       font-weight: bold;
       font-size: 20px;
       display: flex;
       align-items: center;
       gap: 10px;
 
-      img{
+      img {
         width: 28px;
       }
 
@@ -44,7 +44,7 @@ nav {
       }
     }
   }
-  .right{
+  .right {
     flex: 2;
     display: flex;
     align-items: center;
@@ -56,9 +56,51 @@ nav {
       background-color: transparent;
     }
 
-    a{
+    a {
       padding: 12px 24px;
       margin: 20px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+
+      span {
+        @include small {
+          display: none;
+        }
+      }
+
+      .profile {
+        padding: 12px 24px;
+        background-color: #fece51;
+        cursor: pointer;
+        border: none;
+        position: relative;
+
+        .notification {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          background-color: red;
+          color: white;
+          border-radius: 50%;
+          width: 26px;
+          height: 26px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
 
     .register {
@@ -69,7 +111,7 @@ nav {
       display: none;
       z-index: 2;
 
-      img{
+      img {
         width: 36px;
         height: 36px;
         cursor: pointer;
@@ -80,7 +122,7 @@ nav {
       }
     }
 
-    .menu{
+    .menu {
       position: absolute;
       top: 0;
       right: -50%;
@@ -94,7 +136,7 @@ nav {
       align-items: center;
       justify-content: center;
       font-size: 24px;
-      
+
       &.active {
         right: 0;
       }
