@@ -1,10 +1,9 @@
 import "./styles.scss";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 import apiRequest from "../../lib/apiRequest.js";
 
-const Register = () => {
+function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState("");
 
@@ -14,46 +13,45 @@ const Register = () => {
     e.preventDefault();
     setIsLoading(true)
     setError("")
-
+    
     const formData = new FormData(e.target);
 
     const username = formData.get("username");
-    const email = formData.get("email");
     const password = formData.get("password");
 
     try {
-      const res = await apiRequest.post("/auth/register", {
+      const res = await apiRequest.post("/auth/login", {
         username,
-        email,
         password,
       });
      
-      navigate("/login")
+      localStorage.setItem("user", JSON.stringify(res.data))
+      navigate("/")
     } catch (error) {
-      setError(error.response.data.message)
+      console.log(error)
+      // setError(error.response.data.message)
     } finally {
       setIsLoading(false)
     }
   };
 
   return (
-    <div className="register">
-      <div className="form-container">
+    <div className="login">
+      <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <h1>Create an account</h1>
-          <input type="text" name="username" placeholder="Username" />
-          <input type="text" name="email" placeholder="E-mail" />
-          <input type="password" name="password" placeholder="Password" />
-          <button disabled={isLoading}>Register</button>
+          <h1>Welcome back</h1>
+          <input name="username" required minLength={3} maxLength={20} type="text" placeholder="Username" />
+          <input name="password" required type="password" placeholder="Password" />
+          <button disabled={isLoading}>Login</button>
           {error && <span>{error}</span>}
-          <Link to="/login">Do you have an account?</Link>
+          <Link to="/register">{"Don't"} you have an account?</Link>
         </form>
       </div>
-      <div className="img-container">
+      <div className="imgContainer">
         <img src="/bg.png" alt="" />
       </div>
     </div>
   );
-};
+}
 
-export default Register;
+export default Login;
