@@ -4,6 +4,7 @@ import ListPage from "./routes/listPage";
 import Layout from "./layout/index.jsx"
 import SinglePage from "./routes/singlePage"
 import ProfilePage from "./routes/profilePage";
+import Register from "./routes/register";
 
 function App() {
 
@@ -27,6 +28,10 @@ function App() {
         {
           path: "/profile",
           element:<ProfilePage />
+        },
+        {
+          path: "/register",
+          element:<Register />
         }
       ]
     },
