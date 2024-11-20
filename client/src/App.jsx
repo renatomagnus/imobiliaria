@@ -6,6 +6,7 @@ import SinglePage from "./routes/singlePage"
 import ProfilePage from "./routes/profilePage";
 import Register from "./routes/register";
 import Login from "./routes/login";
+import ProfileUpdatePage from "./routes/profileUpdatePage";
 
 function App() {
 
@@ -44,6 +45,10 @@ function App() {
         {
           path: "/profile",
           element:<ProfilePage />
+        },
+        {
+          path: "/profile/update",
+          element:<ProfileUpdatePage />
         },
       ]
     },
