@@ -27,44 +27,33 @@ export const getUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   const id = req.params.id;
   const tokenUserId = req.userId;
-  const { username, password, avatar, ...inputs } = req.body;
+  const { password, avatar, ...inputs } = req.body;
 
   if (id !== tokenUserId) {
-      return res.status(403).json({ message: "Not Authorized!" });
+    return res.status(403).json({ message: "Not Authorized!" });
   }
 
+  let updatedPassword = null;
   try {
-      // Verificar se o username já está em uso
-      if (username) {
-          const existingUser = await prisma.user.findUnique({
-              where: { username },
-          });
-          if (existingUser && existingUser.id !== id) {
-              return res.status(400).json({ message: "Username already in use!" });
-          }
-      }
+    if (password) {
+      updatedPassword = await bcrypt.hash(password, 10);
+    }
 
-      let updatedPassword = null;
-      if (password) {
-          updatedPassword = await bcrypt.hash(password, 10);
-      }
+    const updatedUser = await prisma.user.update({
+      where: { id },
+      data: {
+        ...inputs,
+        ...(updatedPassword && { password: updatedPassword }),
+        ...(avatar && { avatar }),
+      },
+    });
 
-      const updatedUser = await prisma.user.update({
-          where: { id },
-          data: {
-              ...inputs,
-              ...(username && { username }),
-              ...(updatedPassword && { password: updatedPassword }),
-              ...(avatar && { avatar }),
-          },
-      });
+    const { password: userPassword, ...rest } = updatedUser;
 
-      const { password: userPassword, ...rest } = updatedUser;
-
-      res.status(200).json(rest);
+    res.status(200).json(rest);
   } catch (err) {
-      console.log(err);
-      res.status(500).json({ message: "Failed to update user!" });
+    console.log(err);
+    res.status(500).json({ message: "Failed to update users!" });
   }
 };
 
